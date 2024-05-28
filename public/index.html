@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <link rel="stylesheet" href="/bs/css/bootstrap.min.css" />
   </head>
   <body>
+    <!-- 對於不接受js 的瀏覽器顯示的字 -->
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
+    <!-- 跟之前一樣，這邊代表vue 管理的容器 ，但是他的內部內容以後就不會在這裡直接寫了 -->
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    <script src="/js/jquery-3.7.1.js"></script>
+    <script src="/bs/js/bootstrap.bundle.js"></script>
+    <script src="/js/holder.min.js"></script>
   </body>
 </html>
