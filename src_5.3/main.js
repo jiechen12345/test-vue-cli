@@ -2,8 +2,8 @@
 // <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 import Vue from 'vue';
 import App from './App.vue';
-
 Vue.config.productionTip = false;
+
 
 //建立Vue 實例，並且掛載到 #app 元素中
 new Vue({
