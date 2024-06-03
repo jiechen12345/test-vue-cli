@@ -1,28 +1,26 @@
 <!-- app.vue -->
 <template>
   <div id="app" class="container">
-    <a href="#" class="btn btn-primary" @click="showModal()">exit</a>
-    <!-- <ModalComponent :visible="isShow" @update:visible="isShow = $event"></ModalComponent> -->
-    <ModalComponent :visible.sync="isShow"></ModalComponent>
+    <BComponent></BComponent>
+    <AComponent></AComponent>
+    <CComponent></CComponent>
   </div>
 </template>
 
 <script>
-import ModalComponent from './components/ModalComponent.vue'
+
+import AComponent from './components/AComponent'
+import BComponent from './components/BComponent'
+import CComponent from './components/CComponent'
 export default {
-  data() {
-    return {
-      cityId: '1',
-      isShow: false
-    }
-  },
+  name: 'App',
   components: {
-    ModalComponent,
+    AComponent,
+    BComponent,
+    CComponent,
   },
   methods: {
-    showModal() {
-      this.isShow = true
-    }
+
   }
 };
 </script>

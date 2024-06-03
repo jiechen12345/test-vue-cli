@@ -2,8 +2,8 @@
 <template>
   <div id="app" class="container">
     <a href="#" class="btn btn-primary" @click="showModal()">exit</a>
-    <!-- <ModalComponent :visible="isShow" @update:visible="isShow = $event"></ModalComponent> -->
-    <ModalComponent :visible.sync="isShow"></ModalComponent>
+    <!-- <ModalComponent :visible.sync="isShow"></ModalComponent> -->
+    <ModalComponent :visible="isShow" @update:visible="isShow = $event"></ModalComponent>
   </div>
 </template>
 
