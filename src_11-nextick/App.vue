@@ -1,7 +1,9 @@
 <!--App.vue-->
 <template>
   <div id="app" class="container">
-    <FormComponent v-focus2 ref="FormComponent1"></FormComponent>
+    {{ msg }}
+    <a href="#" @click="handleSet" class="btn btn-success">編輯</a>
+    <FormComponent ref="FormComponent1" :visible="isShowEdit"></FormComponent>
   </div>
 </template>
 
@@ -12,18 +14,27 @@ export default {
   data() {
     return {
       msg: 'Title',
-    }
-  },
-  directives: {
-    focus2: {
-      inserted(el) {
-        console.log('..')
-        el.focus()
-      }
+      isShowEdit: false,
     }
   },
   methods: {
-
+    handleSet() {
+      // 顯示 FormComponent
+      this.isShowEdit = true;
+      // 使用 $nextTick 確保 DOM 已被更新後再設置焦點
+      this.$nextTick(() => {
+        this.$refs.FormComponent1.focus();
+      });
+    },
+    clearForm() {
+      this.$refs.FormComponent1.clear();
+    },
+    setFormValue(value) {
+      this.$refs.FormComponent1.setValue(value);
+    },
+    getFormValue() {
+      return this.$refs.FormComponent1.getValue();
+    }
   },
   components: {
     FormComponent

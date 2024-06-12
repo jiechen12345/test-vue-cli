@@ -1,32 +1,22 @@
-<!--App.vue-->
+<!-- app.vue -->
 <template>
   <div id="app" class="container">
-    <FormComponent v-focus2 ref="FormComponent1"></FormComponent>
+    <!--來亂的div-->
+    <div class="base-chart-box" style="width:60px; height: 60px;"></div>
+    <EchartsComponent></EchartsComponent>
   </div>
 </template>
 
 <script>
-import FormComponent from './components/FormComponent.vue'
-
+import EchartsComponent from './components/EchartsComponent'
 export default {
   data() {
     return {
-      msg: 'Title',
-    }
-  },
-  directives: {
-    focus2: {
-      inserted(el) {
-        console.log('..')
-        el.focus()
-      }
-    }
-  },
-  methods: {
 
+    }
   },
   components: {
-    FormComponent
+    EchartsComponent
   }
 };
 </script>
@@ -44,7 +34,7 @@ export default {
   margin-bottom: 15px;
 }
 
-/*radio*/
+/*redio*/
 .custom-radio-btn {
   display: flex;
   align-items: center;

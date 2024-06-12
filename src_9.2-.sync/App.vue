@@ -1,32 +1,30 @@
-<!--App.vue-->
+<!-- app.vue -->
 <template>
   <div id="app" class="container">
-    <FormComponent v-focus2 ref="FormComponent1"></FormComponent>
+    <a href="#" class="btn btn-primary" @click="showModal()">exit</a>
+    <!-- <ModalComponent :visible="isShow" @update:visible="isShow = $event"></ModalComponent> -->
+    <ModalComponent :visible.sync="isShow"></ModalComponent>
+    <!-- vue3 -->
+    <!-- <ModalComponent v-model:visible="isShow"></ModalComponent> -->
   </div>
 </template>
 
 <script>
-import FormComponent from './components/FormComponent.vue'
-
+import ModalComponent from './components/ModalComponent.vue'
 export default {
   data() {
     return {
-      msg: 'Title',
+      cityId: '1',
+      isShow: false
     }
-  },
-  directives: {
-    focus2: {
-      inserted(el) {
-        console.log('..')
-        el.focus()
-      }
-    }
-  },
-  methods: {
-
   },
   components: {
-    FormComponent
+    ModalComponent,
+  },
+  methods: {
+    showModal() {
+      this.isShow = true
+    }
   }
 };
 </script>
@@ -44,7 +42,7 @@ export default {
   margin-bottom: 15px;
 }
 
-/*radio*/
+/*redio*/
 .custom-radio-btn {
   display: flex;
   align-items: center;

@@ -1,18 +1,9 @@
 // 引入Vue 負責初始化 Vue 實例，並也引入 App.vue
 // <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-// main.js
 import Vue from 'vue';
 import App from './App.vue';
 
 Vue.config.productionTip = false;
-//全局註冊指令
-Vue.directive('focus', {
-  inserted(el, binding) {
-    console.log(el);
-    console.log(binding);
-    el.focus();
-  },
-});
 
 //建立Vue 實例，並且掛載到 #app 元素中
 new Vue({

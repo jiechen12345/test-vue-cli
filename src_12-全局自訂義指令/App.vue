@@ -1,7 +1,7 @@
 <!--App.vue-->
 <template>
   <div id="app" class="container">
-    <FormComponent v-focus2 ref="FormComponent1"></FormComponent>
+    <FormComponent v-focus ref="FormComponent1"></FormComponent>
   </div>
 </template>
 
@@ -12,14 +12,6 @@ export default {
   data() {
     return {
       msg: 'Title',
-    }
-  },
-  directives: {
-    focus2: {
-      inserted(el) {
-        console.log('..')
-        el.focus()
-      }
     }
   },
   methods: {

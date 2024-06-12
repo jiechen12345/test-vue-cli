@@ -1,28 +1,31 @@
 <!-- app.vue -->
 <template>
   <div id="app" class="container">
-    <a href="#" class="btn btn-primary" @click="showModal()">exit</a>
-    <!-- <ModalComponent :visible.sync="isShow"></ModalComponent> -->
-    <ModalComponent :visible="isShow" @update:visible="isShow = $event"></ModalComponent>
+    {{ msg }}
+    <FormComponent ref="FormComponent1"></FormComponent>
+    <a href="#" @click="handleGet" class="btn btn-primary">Get Values</a>
+    <a href="#" @click="handleSet" class="btn btn-success">Reset</a>
   </div>
 </template>
 
 <script>
-import ModalComponent from './components/ModalComponent.vue'
+import FormComponent from './components/FormComponent.vue'
 export default {
   data() {
     return {
-      cityId: '1',
-      isShow: false
+      msg: ''
+    }
+  },
+  methods: {
+    handleGet() {
+      console.log(this.$refs.FormComponent1.getValues())
+    },
+    handleSet() {
+      this.$refs.FormComponent1.resetValues()
     }
   },
   components: {
-    ModalComponent,
-  },
-  methods: {
-    showModal() {
-      this.isShow = true
-    }
+    FormComponent
   }
 };
 </script>
