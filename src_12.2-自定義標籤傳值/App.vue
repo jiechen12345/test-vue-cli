@@ -1,25 +1,35 @@
 <!--App.vue-->
 <template>
   <div id="app" class="container">
-    <FormComponent v-focus ref="FormComponent1"></FormComponent>
+    <h1 v-color="color1">{{ msg }}</h1>
+    <h1 v-color="color2">{{ msg }}</h1>
   </div>
 </template>
 
 <script>
-import FormComponent from './components/FormComponent.vue'
 
 export default {
   data() {
     return {
       msg: 'Title',
+      color1: 'red',
+      color2: 'green',
     }
   },
-  methods: {
-
+  directives: {
+    color: {
+      inserted(el, binding) { //只限於DOM 被插入時
+        console.log(binding.value)
+        el.style.color = binding.value
+      },
+      update(el, binding) { //指令相關值被更新
+        console.log('updated')
+        el.style.color = binding.value
+      },
+    }
   },
-  components: {
-    FormComponent
-  }
+
+
 };
 </script>
 

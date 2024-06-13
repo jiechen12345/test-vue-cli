@@ -1,6 +1,6 @@
 <!-- FormComponent.vue -->
 <template>
-    <input ref="inputField" />
+    <input class="form-control" />
 </template>
 
 <script>

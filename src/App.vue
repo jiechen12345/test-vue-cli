@@ -1,37 +1,60 @@
 <!--App.vue-->
 <template>
-  <div id="app" class="container">
-    <FormComponent v-focus2 ref="FormComponent1"></FormComponent>
+  <div id="app" v-loading="isLoading" class="container">
+    <h1 v-color="color1">{{ msg }}</h1>
+    <h1 v-color="color2">{{ msg }}</h1>
   </div>
 </template>
 
 <script>
-import FormComponent from './components/FormComponent.vue'
 
 export default {
   data() {
     return {
-      msg: 'Title',
+      msg: '',
+      color1: 'red',
+      color2: 'green',
+      isLoading: true,
     }
+  },
+  async created() {
+    setTimeout(() => {
+      this.msg = 'Title'
+      this.isLoading = false
+    }, 3000)
   },
   directives: {
-    focus2: {
-      inserted(el) {
-        console.log('..')
-        el.focus()
+    loading: {
+      inserted(el, binding) {
+        binding.value ? el.classList.add('loading') : el.classList.remove('loading')
+      },
+      update(el, binding) {
+        binding.value ? el.classList.add('loading') : el.classList.remove('loading')
       }
+    },
+    color: {
+      inserted(el, binding) {
+        el.style.color = binding.value
+      },
+      update(el, binding) {
+        el.style.color = binding.value
+      },
     }
-  },
-  methods: {
-
-  },
-  components: {
-    FormComponent
   }
 };
 </script>
 
 <style>
+.loading::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(../public/img/loading.gif) no-repeat center;
+}
+
 .container {
   padding-top: 20px;
 }

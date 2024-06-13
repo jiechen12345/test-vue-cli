@@ -5,14 +5,6 @@ import Vue from 'vue';
 import App from './App.vue';
 
 Vue.config.productionTip = false;
-//全局註冊指令
-Vue.directive('focus', {
-  inserted(el, binding) {
-    console.log(el);
-    console.log(binding);
-    el.focus();
-  },
-});
 
 //建立Vue 實例，並且掛載到 #app 元素中
 new Vue({
