@@ -1,116 +1,70 @@
 <template>
-  <div class="col-12 col-lg-8" style="height: 600px; overflow-y: auto; overflow-x: auto;">
-    <MyGrid :rowData="datas" :gridOptions="gridOptions1" :columnDefs="columnDefs1" :gridStyle="gridStyle1"
-      @gridReady="onGridReady" @cellClicked="onCellClicked">
-      <template #tbar>
-        <button class="btn btn-success btn-block col-lg-3 mb-3" @click="logSelectedRows">Log Selected Rows</button>
-      </template>
-      <template #bbar>
-        <button class="btn btn-success btn-block col-lg-3 mb-3" @click="logSelectedRows">Log Selected Rows</button>
-      </template>
-    </MyGrid>
+  <div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <div class="d-flex flex-column align-items-start">
+          <a class="navbar-brand" href="/">
+            <img src="@/assets/logo01.png" alt="Logo" height="25">
+          </a>
+          <div class="navbar-collapse">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <router-link class="nav-link" to="/aa" active-class="active">Shipment Detail</router-link>
+              </li>
+              <li class="nav-item">
+                <router-link class="nav-link" to="/bb" active-class="active">Cargo Tracking</router-link>
+              </li>
+              <li class="nav-item">
+                <router-link class="nav-link" to="/cc" active-class="active">Statistics Report</router-link>
+              </li>
+              <li class="nav-item">
+                <router-link class="nav-link" to="/dd" active-class="active">ISF Status</router-link>
+              </li>
+              <li class="nav-item">
+                <router-link class="nav-link text-center" to="/ee" active-class="active">Shipments
+                  Status<br>Update</router-link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import 'ag-grid-community/styles/ag-grid.css';
-import 'ag-grid-community/styles/ag-theme-alpine.css';
-import MyGrid from './components/MyGrid.vue';
-
 export default {
-  components: {
-    MyGrid
-  },
-  data() {
-    return {
-      datas: [
-        { PO_NAME: 'name1', PO_COUNT: 5, PO_DESC: 'OOXX' },
-        { PO_NAME: 'name2', PO_COUNT: 4, PO_DESC: 'asd' },
-        { PO_NAME: 'name3', PO_COUNT: 3, PO_DESC: 'zxc' },
-        { PO_NAME: 'name4', PO_COUNT: 1, PO_DESC: 'qwe' },
-        { PO_NAME: 'name5', PO_COUNT: 5, PO_DESC: 'asd' },
-        { PO_NAME: 'name6', PO_COUNT: 6, PO_DESC: 'OOXzxcX' },
-        { PO_NAME: 'name6', PO_COUNT: 68, PO_DESC: 'OOXzasdsadasdsadsasdasdasdadasdasdasdasdasdsadasdasdasdasdasdasdsadasdasdasdasaxcX' }
-      ],
-      gridOptions1: {
-        rowSelection: 'multiple',// 設置多選模式
-        pagination: true,
-        paginationPageSize: 10,
-        enableSorting: true,
-        enableFilter: true,
-        suppressRowClickSelection: false,
-      },
-      columnDefs1: [
-        { headerName: '', checkboxSelection: true, headerCheckboxSelection: true, flex: 1 },
-        {
-          headerName: 'Name',
-          field: 'PO_NAME',
-          flex: 2,
-          cellStyle: { textAlign: 'center' },
-          headerClass: 'header-center',
-          editable: true,
-        },
-        {
-          headerName: 'Count',
-          field: 'PO_COUNT',
-          flex: 2,
-          cellStyle: { textAlign: 'right' },
-          headerClass: 'header-center',
-          editable: true,
-          cellEditor: 'agNumberCellEditor',
-          cellEditorParams: {
-            min: 0,
-            max: 100
-          }
-        },
-        {
-          headerName: 'Desc',
-          field: 'PO_DESC',
-          flex: 5,
-          cellStyle: { textAlign: 'left' },
-          cellRenderer: this.descCellRenderer,
-          editable: true,
-          headerClass: 'header-center',
-          cellEditor: 'agLargeTextCellEditor',
-          cellEditorPopup: true,
-          cellEditorParams: {
-            maxLength: 100
-          }
-        }
-      ],
-      gridStyle1: {
-        width: '700px',
-        height: '400px'
-      }
-    };
-  },
-  methods: {
-    onGridReady(params) {
-      console.log('App ready:', params);
-      this.gridApi = params.api; // 儲存 grid API 以便後續使用
-    },
-    onCellClicked(cell) {
-      console.log('App cell:', cell);
-    },
-    logSelectedRows() {
-      // this.gridApi.deselectAll()
-      const selectedRows = this.gridApi.getSelectedRows();// 獲取所有選取的資料
-      console.log('Selected Rows:', selectedRows);
-    },
-    descCellRenderer(params) {
-      const value = params.value;
-      console.log('descCellRenderer', params)
-      if (value && value.length > 10) {
-        return `<span title="${value}">${value.substring(0, 10)}...</span>`;
-      }
-      return value;
-    },
-
-  }
 };
 </script>
+
 <style scoped>
-.header-center .ag-header-cell-label {
-  justify-content: center;
+.navbar {
+  background-color: #e6f2e6;
+}
+
+.nav-link {
+  color: #006400;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.nav-link:hover {
+  background-color: #c1e1c1;
+  color: #004d00;
+}
+
+.nav-item .active {
+  background-color: #a9d6a9;
+  box-shadow: inset 0px 3px 5px rgba(0, 0, 0, 0.2);
+  /* 按下效果 */
+  color: white;
+
+}
+
+.text-center {
+  text-align: center;
 }
 </style>
